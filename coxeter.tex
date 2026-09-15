@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+\input{preamble.tex}
+\usepackage[left=1.5cm, right=1.5cm, top=1.3cm, includehead, includefoot]{geometry}
+
+% Section labling for equations
+\numberwithin{equation}{section}
+
+%% Header
+\pagestyle{fancy}
+\fancyhead[L]{\bf\large Coxeter Group}
+\fancyhead[R]{\bf\large Edward}
+% \fancyfoot[C]{Page \thepage\ of 2}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{35pt}
+
+% =====================================================================================================
+
+\begin{document}
+% =====================================================================================================
+% Title page
+\begin{titlepage}
+  \begin{center}
+    \vspace*{4cm}
+    \textbf{\Huge{Coxeter Group}}
+ 
+    \vspace{1.5cm}
+    Note Taker: \textbf{Edward Chang}
+
+    Email: \textit{edward.chang@uwaterloo.ca}
+
+    Updated: \today
+  \end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+% =====================================================================================================
+2026-09-14
+\section{Introduction}
+\begin{defm}{Group}
+  A \textbf{group} \((G, \bullet)\) where \(G\) is a set and \(\bullet: G \times G \to G\) is a binary operator on the set.
+\end{defm}
+\end{document}
