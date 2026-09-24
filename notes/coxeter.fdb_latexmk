@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1789754846.68255 "coxeter.tex" "coxeter.pdf" "coxeter" 1789754848.21717 0
+["pdflatex"] 1790003429.52731 "coxeter.tex" "coxeter.pdf" "coxeter" 1790003430.87465 0
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1775415801 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1775415801 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1775415801 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -272,10 +272,10 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1775415801 43569 fd570f2fa160877d211e859f687312ba ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1787461525 5385779 47c0c393a77fd4a098bacfd57d66b88a ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1787461496 2328192 b35cc32545c10708d1c4c66d4917bba1 ""
-  "coxeter.aux" 1789754848.06527 401 80762c79882c71435bea6df59bfa399c "pdflatex"
-  "coxeter.out" 1789754848.06743 103 9814c2d956916adb9290eca4e25c967a "pdflatex"
-  "coxeter.tex" 1789754846.58826 3457 c5838f917fa9e33e2a93cd3b7d503ff5 ""
-  "coxeter.toc" 1789754848.06743 68 67461dc3484237a0a884eed17df73836 "pdflatex"
+  "coxeter.aux" 1790003430.73869 401 959070c17a78cb3c38861b49238d139b "pdflatex"
+  "coxeter.out" 1790003430.74092 103 9814c2d956916adb9290eca4e25c967a "pdflatex"
+  "coxeter.tex" 1790003428.91648 3884 33e5115029adc84589369590199293df ""
+  "coxeter.toc" 1790003430.74092 68 67461dc3484237a0a884eed17df73836 "pdflatex"
   "preamble.tex" 1789679071.32539 15719 74d0bdfc883c98a0858047601fe1a655 ""
   (generated)
   "coxeter.aux"
