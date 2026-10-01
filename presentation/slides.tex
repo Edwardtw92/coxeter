@@ -1,0 +1,397 @@
+\documentclass{beamer}
+% \input{~/Documents/Research/Research_with_Aldo/PSI_Start_2025/qt_slides/preamble.tex}
+\input{preamble.tex}
+\usepackage{datetime2}
+
+\usetheme[compress]{Berlin}
+\setbeamertemplate{page number in head/foot}{\insertpagenumber/\insertdocumentendpage}
+
+% Title page
+\title{Symplectic Geometry:\\Classical Field Theory Reimagined}
+\author{Edward Chang}
+\institute{University of Waterloo, Department of Applied Mathematics\\ Perimeter Institute for Theoretical Physics}
+% \date{2025-07-21}
+\date{\today}
+
+\begin{document}
+% ======================================================================================================
+% ======================================================================================================
+\frame{\titlepage}
+
+% \begin{frame}{}
+%   \begin{block}{Motivation}
+%     Classical mechanics can be written elegantly in phase space with the language of Poisson and symplectic Geometry. So it is meaningful to explore its quantisation and when the direct product structure is preserved.
+%   \end{block}
+% \end{frame}
+
+\begin{frame}
+  \begin{block}{Motivation}
+    In the Hamiltonian formulation of classical mechanics, it is required to discuss about the structure of phase space. However, phase space's deeper geometrical structures written in the language of differential forms are often being overlooked. A geometric formulation of mechanics allows for a more rigorous treatment of symmetries.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Table of Contents}
+  \tableofcontents
+\end{frame}
+
+\AtBeginSection[]
+{
+  \begin{frame}{Table of Contents}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
+
+% ======================================================================================================
+\section{Review of Differential Geometry}
+\begin{frame}{}
+  \begin{block}{Manifold}
+    A \textbf{(smooth) manifold} is a second countable and Hausdorff topological space that is locally Euclidean.
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+    \begin{block}{Tangent Space}
+      The \textbf{tangent space} of \(M\) at point \(p\) defines a vector space that contains the vectors defined on \(p \in M\).
+    \end{block}
+    \begin{example}
+      Let \(f: M \to \R\) be a smooth function defined on \(M\), then
+      \begin{equation}
+        \boldsymbol{v} = v ^{\mu} \partial _{\mu} \in T _{p} M \implies \boldsymbol{v}(f) = v ^{\mu} \partial _{\mu} f = \mathsf{L}_ {\boldsymbol{v}} f \in \R.
+      \end{equation}
+    \end{example}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Cotangent Space}
+    The \textbf{cotangent space} of \(M\) at point p defines a vector space that contains the \(1\)-forms defined on \(p \in M\).
+  \end{block}
+
+  \begin{example}
+    Let \(\boldsymbol{X} \in T _{p} M\) be a vector defined at point \(p \in M\), then
+    \begin{equation}
+      \boldsymbol{\alpha} = \alpha _{\mu} \, \mathsf{d} x ^{\mu} \in T _{p} ^{\star} M \implies \mathsf{i} _{X} \boldsymbol{\alpha} = \left< \boldsymbol{\alpha}, \boldsymbol{X} \right> = \boldsymbol{\omega} (\boldsymbol{X}) = \alpha _{\mu} X ^{\mu}\in \R.
+    \end{equation}
+  \end{example}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Tangent Bundle}
+    \begin{equation}
+      T M = \coprod _{p \in M} T _{p} M = \bigcup _{p \in M} \{p\} \times T _{p} M
+    \end{equation}
+  \end{block}
+  \begin{block}{Cotangent Bundle}
+    \begin{equation}
+      T ^{\star} M = \coprod _{p \in M} T _{p} ^{\star} M = \bigcup _{p \in M} \{p\} \times T _{p} ^{\star} M
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{\(k\)-Vector Field}
+    A \textbf{\(k\)-vector field} on \(M\) is defined as
+    \begin{equation}
+      \mathfrak{X} ^{\wedge k} (M) = \Gamma (M, \wedge ^{k} (T M))
+    \end{equation}
+  \end{block}
+
+  \begin{example}
+    \begin{equation}
+      \mathfrak{X} ^{1} (M) \ni \boldsymbol{\alpha} : M \to T M
+    \end{equation}
+  \end{example}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{\(k\)-Form Field}
+    A \textbf{\(k\)-form field} on \(M\) is defined as
+    \begin{equation}
+      \Omega ^{k} (M) = \Gamma (M, \wedge ^{k} (T ^{\star} M))
+    \end{equation}
+  \end{block}
+
+  \begin{example}
+    \begin{equation}
+      \begin{split}
+        &\Omega ^{0} \ni f: M \to \R\\
+        &\Omega ^{1} \ni \boldsymbol{\alpha} : M \to T ^{\star} M\\
+        &\Omega ^{2} \ni \boldsymbol{\omega} : M \to T ^{\star} M \wedge T ^{\star} M
+      \end{split}
+    \end{equation}
+  \end{example}
+\end{frame}
+
+% ======================================================================================================
+\section{Symplectic \& Poisson Geometry}
+\begin{frame}{}
+  \begin{block}{Configuration Space}
+    The \textbf{configuration space} \(Q\), is the space of \textbf{generalised position} \(q\).
+  \end{block}
+
+  \begin{block}{Generalised Velocity}
+    The \textbf{generalised velocity} at point \(q \in Q\) is \(\boldsymbol{v} \in T _{q} Q\)
+  \end{block}
+
+  \begin{block}{Generalised Momentum}
+    The \textbf{generalised momentum} at point \(q \in Q\) \(\boldsymbol{p} \in T _{q} ^{\star} Q\)
+  \end{block}
+\end{frame}
+\begin{frame}{}
+  \begin{block}{Velocity Phase Space}
+    \begin{equation}
+      P _{v} = T Q = \bigcup _{q \in Q} \{q\} \times T _{q} Q \ni (q, \boldsymbol{v}).
+    \end{equation}
+  \end{block}
+
+  \begin{block}{Phase Space}
+    \begin{equation}
+      P = T ^{\star} Q = \bigcup _{q \in Q} \{q\} \times T _{q} ^{\star} Q \ni (q, \boldsymbol{p}).
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{example}
+    Velocity phase space of pendulums:
+    \begin{itemize}
+      \item A 2d pendulum has configuration space \(Q = S ^{1}\) hence its velocity phase space is \(P _{v} = T ^{\star} Q = S ^{1} \times \R\) as \(T Q\) is a trivial bundle.
+      \item A 3d pendulum has configuration space \(Q = S ^{2}\) but since \(T Q = T S ^{2}\) is not a trivial bundle \(P _{v} \neq S ^{2} \times \R ^{2}\) (can also be seen from hairy ball theorem).
+    \end{itemize}
+    Note: A trivial bundle of dimension \(n\) over a manifold \(Q\) can always be written as \(T Q \cong Q \times \R ^{n}\).
+  \end{example}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Symplectic Form}
+    A \textbf{symplectic form} on an even dimensional manifold \(P\) is a \(2\)-form \(\boldsymbol{\omega} \in \Omega ^{2} (P)\) such that it is closed and non-degenerate, i.e.
+    \begin{equation}
+      \mathsf{d} \boldsymbol{\omega} = \boldsymbol{0}
+    \end{equation}
+    and
+    \begin{equation}
+      \ker(\boldsymbol{\omega}) = \left\{ \boldsymbol{X} \in \mathfrak{X} ^{1} (P) \middle| \boldsymbol{\omega} (\boldsymbol{X}, \boldsymbol{Y}) = 0, \forall \boldsymbol{Y} \in \mathfrak{X} ^{1} (P) \right\} = \{\boldsymbol{0}\}
+    \end{equation}
+  \end{block}
+  \begin{block}{Symplectic Manifold}
+    An even dimensional manifold \(P\) is a \textbf{symplectic manifold} if it is equipped with a \textbf{symplectic form} \(\boldsymbol{\omega}\).
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{alertblock}{Symplectic vs. Poisson Manifold}
+    It is necessary for a (finite dimensional) symplectic manifold to be even dimensional as odd dimensional manifold cannot have non-degenerate \(2\)-forms. In odd dimensional manifolds we can work with Poisson structure instead of symplectic structure. A \textbf{Poisson manifold} is a manifold that is equipped with Poisson structure, i.e. there exists a bi-vector \(\boldsymbol{\Pi} \in \mathfrak{X} ^{\wedge 2} (P)\) that defines a \textbf{Poisson bracket}. A symplectic manifold must also be a Poisson manifold.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Poisson Bracket}
+    Let \(\boldsymbol{\Pi} \in \mathfrak{X}^{\wedge 2} (P)\) be the Poisson bi-vector on \(P\), then the \textbf{Poisson bracket} is defined as
+    \begin{equation}
+      \left\{ \bullet, \bullet \right\} = \frac{1}{2} \Pi ^{\alpha \beta} \partial _{\alpha} \wedge \partial _{\beta} : C ^{\infty} (P) \times C ^{\infty} (P) \to C ^{\infty} (P),
+    \end{equation}
+    and \(\left\{ \bullet, \bullet \right\}\) follows that:
+    \begin{itemize}
+      \item Poisson bracket is anti-symmetric.
+      \item Poisson bracket satisfies the Leibniz rule.
+      \item Poisson bracket follows the Jacobi identity.
+    \end{itemize}
+    Note: The first two properties along with linearity implies Poisson bracket defines a \textbf{Lie algebra}.
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{example}
+    For a symplectic manifold \(P\) of dimension \(2n\), the symplectic form \(\boldsymbol{\omega} \in \Omega ^{2} (P)\) and Poisson bi-vector \(\boldsymbol{\Pi} \in \mathfrak{X} ^{\wedge 2} (M)\) can be represented by an invertible square matrix as
+    \begin{equation}
+      \boldsymbol{\omega} = \frac{1}{2} \omega _{\alpha \beta} \, \mathsf{d} z ^{\mu} \wedge \mathsf{d} z ^{\nu} \text{ and } \boldsymbol{\Pi} = \frac{1}{2} \Pi ^{\alpha \beta} \partial _{\alpha} \wedge \partial _{\beta}
+    \end{equation}
+    with
+    \begin{equation}
+      \omega _{\alpha \beta} \equiv
+      \begin{bmatrix}
+        \mathbb{0} _{n} & -\mathbb{1} _{n}\\
+        \mathbb{1} _{n} & \mathbb{0} _{n}
+      \end{bmatrix}
+      \text{ and } \Pi ^{\alpha \beta} = \left( \omega _{\alpha \beta} \right) ^{-1} \equiv
+      \begin{bmatrix}
+        \mathbb{0} _{n} & \mathbb{1} _{n}\\
+        - \mathbb{1} _{n} & \mathbb{0} _{n}
+      \end{bmatrix}.
+    \end{equation}
+  \end{example}
+\end{frame}
+
+\begin{frame}{}
+  \begin{alertblock}{Darboux's Theorem for Symplectic Manifold}
+    Given a symplectic manifold \((P, \boldsymbol{\omega})\), the manifold is locally characterised by it's Darboux/canonical coordinates as
+    \begin{equation}
+      \boldsymbol{\omega} := \frac{1}{2} \sum _{\mu, \nu = 1} ^{2n} \omega _{\alpha \beta} \, \mathsf{d} z ^{\mu} \wedge \mathsf{d} z ^{\nu} = \sum _{i = 1} \mathsf{d} p _{i} \wedge \mathsf{d} q ^{i} \in \Omega ^{2} (P).
+    \end{equation}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Symplectic Potential}
+    For a symplectic manifold \((P, \boldsymbol{\omega})\), a \(1\)-form \(\boldsymbol{\theta} \in \Omega ^{1} (P)\) such that
+    \begin{equation}
+      \mathsf{d} \boldsymbol{\theta} = \boldsymbol{\omega}
+    \end{equation} is called a \textbf{symplectic potential} of \(\boldsymbol{\omega}\).
+  \end{block}
+  \begin{alertblock}{Phase Spaces is Symplectic}
+  It can be shown that any cotangent bundle \(P = T ^{\star} Q\) is equipped with a \textbf{tautological \(1\)-form}, \(\boldsymbol{\theta}\) such that \(\boldsymbol{\omega} = \mathsf{d} \boldsymbol{\theta}\).
+  In coordinates,
+    \begin{equation}
+      \boldsymbol{\theta} = \sum _{i} p _{i} \mathsf{d} q ^{i} \in \Omega ^{1} (P) \implies \boldsymbol{\omega} = \mathsf{d} \boldsymbol{\theta} = \sum _{i} \mathsf{d} p _{i} \wedge \mathsf{d} q ^{i} \in \Omega ^{2} (P)
+    \end{equation}
+  \end{alertblock}
+\end{frame}
+
+% ======================================================================================================
+\section{Dynamics}
+\begin{frame}{}
+  \begin{block}{Hamiltonian Vector Field (HVF)}
+    A vector field \(\boldsymbol{X} _{f}\) is called a \textbf{Hamiltonian vector field} if there exists a function \(f \in C ^{\infty} (P)\) such that, 
+    \begin{equation}
+      \mathsf{i} _{\boldsymbol{X} _{f}} \boldsymbol{\omega}  = - \mathsf{d} f.
+    \end{equation}
+
+    Not all vector fields on \(P\) are HVFs, this is only true when the first de Rham cohomology of \(P\) is trivial then \(\boldsymbol{X} \in \mathfrak{X} (P)\) is Hamiltonian iff \(\mathsf{L}_ {\boldsymbol{X}} \boldsymbol{\omega} = 0\) (i.e. HVF iff symplectomorphism).
+
+    Note:
+    \begin{equation}
+      H ^{1} _{dR} (P) = Z ^{1} (P) / B ^{1} (P) = \{0\} \iff P \text{ is simply connected }.
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Poisson Bracket and Time Evolution}
+    Recall from earlier:
+    \begin{equation}
+      \{\bullet, \bullet\}: C ^{\infty} (P) \times C ^{\infty} (P) \to \R.
+    \end{equation}
+
+    The Poisson bracket can be reinterpret as 
+    \begin{equation}
+      \left\{ \bullet, \bullet \right\}: C ^{\infty} (P) \to \mathfrak{X} ^{1} (P), f \mapsto \boldsymbol{X} _{f} := \left\{ f, \bullet \right\}
+    \end{equation}
+
+    Let \(\mathcal{H}\) be the Hamiltonian function of a system on \(P\), then the \textbf{time evolution} of the system is characterised by
+    \begin{equation}
+     \frac{d}{dt} \bullet = \left\{ \mathcal{H}, \bullet \right\} = \boldsymbol{X} _{\mathcal{H}}.
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Hamilton's Equations}
+    Let \(\mathcal{H}\) be the Hamiltonian function of a system on \(P\), then the Hamilton's equations can be written as
+    \begin{equation}
+      \mathsf{i} _{\boldsymbol{X} _{H}} \boldsymbol{\omega} = - \mathsf{d} H.
+    \end{equation}
+  \end{block}
+\end{frame}
+
+% ======================================================================================================
+\section{Symmetry}
+\begin{frame}{}
+  \begin{block}{Lie Group}
+    A \textbf{Lie group} \(G\) is a group that is also a smooth manifold.
+  \end{block}
+
+  \begin{block}{Lie Algebra}
+    A \textbf{Lie algebra} \(\mathfrak{g} = \lie (G)\) is a vector space equipped with a \textbf{Lie bracket}.
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Lie Algebra Action}
+    Let \(\mathfrak{g}\) be a finite dimensional real Lie algebra. A \textbf{Lie algebra action} \(\boldsymbol{\rho}\) of \(\mathfrak{g}\) on \(P\) is a homomorphism of Lie algebras between \(\mathfrak{g}\) and \(\mathfrak{X} (P)\):
+    \begin{equation}
+      \boldsymbol{\rho} : \mathfrak{g} \to \mathfrak{X} ^{1} (P)
+    \end{equation}
+    such that
+    \begin{equation}
+      \boldsymbol{\rho} (k \boldsymbol{\xi} + \boldsymbol{\eta}) = k \boldsymbol{\rho} (\boldsymbol{\xi}) + \boldsymbol{\rho} (\boldsymbol{\eta}) \text{ and } \boldsymbol{\rho} (\left[ \boldsymbol{\xi}, \boldsymbol{\eta} \right]) = \left[ \boldsymbol{\rho} (\boldsymbol{\xi}), \boldsymbol{\rho} (\boldsymbol{\eta}) \right].
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Co-momentum Map}
+    Consider a symplectic manifold \((P, \boldsymbol{\omega})\) with a Lie algebra \(\mathfrak{g}\). A Lie algebra action \(\boldsymbol{\rho}\) admits a \textbf{co-momentum map} \(\check{J}: \mathfrak{g} \to C ^{\infty} (P)\) iff for all \(\boldsymbol{\xi} \in \mathfrak{g}\),
+    \begin{equation}
+      \mathsf{i} _{\boldsymbol{\rho} (\boldsymbol{\xi})} \boldsymbol{\omega} = - \mathsf{d} \check{J} (\boldsymbol{\xi})).
+    \end{equation}
+    Such actions \(\boldsymbol{\rho}\) of \(\mathfrak{g}\) are called \textbf{Hamiltonian actions}.
+  \end{block}
+
+  \begin{block}{Momentum Map}
+    Since \(\boldsymbol{\rho} (\boldsymbol{\xi})\) is linear in 
+    We can consider a dual of the co-momentum map and call it the \textbf{momentum map} \(\boldsymbol{J}: P \to \mathfrak{g} ^{\star}\) such that
+    \begin{equation}
+      (\check{J} (\boldsymbol{\xi})) (x) = \left< \boldsymbol{J} (x), \boldsymbol{\xi} \right>.
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{alertblock}{Corollary}
+    If \(\mathfrak{g}\) is semisimple (\(\mathfrak{g} = \left[ \mathfrak{g}, \mathfrak{g} \right]\)), then the manifold \((P, \boldsymbol{\omega}, \mathfrak{g}, \boldsymbol{\rho})\) is symplectic iff it admits a momentum map \(\boldsymbol{J}\). In other words,
+    \begin{equation}
+      \mathsf{L}_ {\boldsymbol{\rho} (\boldsymbol{\xi})} \boldsymbol{\omega} = 0 \, \forall \boldsymbol{\xi} \in \mathfrak{g} \Leftrightarrow \exists \boldsymbol{J}: P \to \mathfrak{g} ^{\star} \text{ s.t. } \mathsf{i} _{\boldsymbol{\rho}(\boldsymbol{\xi})} \boldsymbol{\omega} = - \mathsf{d} \left< \boldsymbol{J}, \boldsymbol{\xi} \right> \, \forall \boldsymbol{\xi} \in \mathfrak{g}.
+    \end{equation}
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{Equivariance and Cocycles}
+    Consider the coadjoint action \(\ad ^{\star} _{\boldsymbol{\xi}} : \mathfrak{g} ^{\star} \to \mathfrak{g} ^{\star}\) defined by
+    \begin{equation}
+      \left< \ad ^{\star} _{\boldsymbol{\xi}} \boldsymbol{\alpha}, \boldsymbol{\eta} \right> := - \left< \boldsymbol{\alpha}, \ad _{\boldsymbol{\xi}} \boldsymbol{\eta}\right>, \text{ with } \ad _{\boldsymbol{\xi}} \boldsymbol{\eta} := \left[ \boldsymbol{\xi}, \boldsymbol{\eta} \right].
+    \end{equation}
+    Given a symplectic manifold \((P, \boldsymbol{\omega})\) with the Hamiltonian action of Lie algebra \((\mathfrak{g}, \boldsymbol{\rho})\) and a momentum map \(\boldsymbol{J}\). We are interested in studying the following relation
+    \begin{equation}
+    \mathsf{L}_ {\boldsymbol{\rho} (\boldsymbol{\xi})} \boldsymbol{J} (x) = - \ad ^{\star} _{\boldsymbol{\xi}} \boldsymbol{J} (x) + \boldsymbol{\kappa} (\boldsymbol{\xi}, \bullet),
+    \end{equation}
+    where if \(\boldsymbol{\kappa} = 0\) then the cocycle is trivial and the momentum map is \textbf{equivariant} (or covariant for physicists).
+  \end{block}
+\end{frame}
+
+% ======================================================================================================
+\section{Covariant Phase Space}
+\begin{frame}{}
+  \begin{block}{Cartan Calculus}
+    Consider the graded commutator
+    \begin{equation}
+      \left[ A, B \right] = A \circ B - (-1) ^{\deg(A) \cdot \deg(B)} B \circ A,
+    \end{equation}
+    with \(\mathsf{d}\), \(\mathsf{L}_ {\boldsymbol{X}}\), and \(\mathsf{i} _{\boldsymbol{X}}\) having degree of \(1\), \(0\), and \(-1\) respectively.
+    Then the \textbf{Cartan calculus} is characterised by the following:
+    \begin{equation}
+      \begin{split}
+        &\left[ \mathsf{d}, \mathsf{d} \right] = 0, \left[ \mathsf{i} _{\boldsymbol{X}}, \mathsf{i} _{\boldsymbol{Y}} \right] = 0, \left[ \mathsf{L}_ {\boldsymbol{X}}, \mathsf{L}_ {\boldsymbol{Y}} \right] = \mathsf{L}_ {\left[ \boldsymbol{X}, \boldsymbol{Y} \right]}\\
+        &\left[ \mathsf{d}, \mathsf{i} _{\boldsymbol{X}} \right] = \mathsf{L}_ {\boldsymbol{X}}, \left[ \mathsf{d}, \mathsf{L}_ {\boldsymbol{X}} \right] = 0, \left[ \mathsf{L}_ {\boldsymbol{X}}, \mathsf{i} _{\boldsymbol{Y}} \right] = \mathsf{i} _{\left[ \boldsymbol{X}, \boldsymbol{Y} \right]}.
+      \end{split}
+    \end{equation}
+  \end{block}
+  \begin{block}{Infinite Dimensional Cartan Calculus}
+    \begin{equation}
+      (\mathsf{d}, \mathsf{L}_ {\boldsymbol{X}}, \mathsf{i} _{\boldsymbol{X}}) \sim (\mathbb{d}, \mathbb{L}_ {\mathbb{X}}, \mathbb{i} _{\mathbb{X}})
+    \end{equation}
+  \end{block}
+\end{frame}
+
+\begin{frame}{}
+  \begin{block}{EoM and Potential}
+    Consider a manifold \(M\), a field space \(\mathcal{F}\) (of \(M\)), and a space-like surface \(\Sigma \hookrightarrow M\). Given a Lagrangian \(\mathcal{L}\) of a system, we compute the equation of motion (EoM) and a (pre-)symplectic potential \(\boldsymbol{\theta}\) by:
+    \begin{equation}
+      \mathbb{d} \mathcal{L} = \mbox{EoM} \wedge \mathbb{d} A + \mathsf{d} \boldsymbol{\theta}.
+    \end{equation}
+    With the potential we can define a field space \(2\)-form \(\boldsymbol{\omega} _{\Sigma} = \int _{\Sigma} \mathbb{d} \boldsymbol{\theta}\). For a degenerate \(\boldsymbol{\omega} _{\Sigma}\) a symplectic foliation is required and can be achieved by taking the quotient \(\mathcal{F}/ \ker(\boldsymbol{\omega} _{\Sigma})\).
+  \end{block}
+\end{frame}
+
+% ======================================================================================================
+% ======================================================================================================
+\end{document}
